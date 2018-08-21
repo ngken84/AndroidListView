@@ -8,8 +8,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+
+    ArrayList<String> myData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +23,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        myData = new ArrayList<>();
+        myData.add(0, "Hello World");
+        myData.add(1, "Boo Ya");
+
+        ListView myListView = (ListView) findViewById(R.id.myListView);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, myData);
+
+        myListView.setAdapter(adapter);
     }
 
     @Override
